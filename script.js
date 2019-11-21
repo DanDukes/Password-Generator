@@ -13,16 +13,24 @@ console.log(lettersUpper); //log uppercase array
 console.log(numbers); //log numbers array
 console.log(specials); //log numbers array
 
-//Check for checked options
-function ValidatePetSelection() {
+//Check for minimum of 2 checked options
+//If less than two options selected, display an on page warning and disable the generate button
+function ValidateCharSelects() {
   var checkboxes = document.getElementsByName("character_set");
+  const warning = document.querySelector(".warning");
+  var generate = document.getElementById("generate");
   var numberOfCheckedItems = 0;
   for (var i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) numberOfCheckedItems++;
   }
   if (numberOfCheckedItems < 2) {
-    alert("You must select at least two!");
-    return false;
+    warning.classList.add("show");
+    warning.classList.remove("close");
+    generate.setAttribute("disabled", "");
+  } else {
+    warning.classList.add("close");
+    warning.classList.remove("show");
+    generate.removeAttribute("disabled", "");
   }
 }
 
@@ -32,12 +40,12 @@ var passPool = [];
 //Add to charSet based on user options
 // Length Slider
 var slider = document.getElementById("myRange");
-var output = document.getElementById("length");
-output.innerHTML = slider.value; // Display the default slider value
+var length = document.getElementById("length");
+length.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  length.innerHTML = this.value;
 };
 
 //if lower = true {

@@ -20,29 +20,35 @@
           name="character_set"
           value="lower"
           checked
-          onclick="return ValidatePetSelection();"
+          onclick="return ValidateCharSelects();"
         />Lower Case<br />
         <input
           type="checkbox"
           name="character_set"
           value="upper"
           checked
-          onclick="return ValidatePetSelection();"
+          onclick="return ValidateCharSelects();"
         />Upper Case<br />
         <input
           type="checkbox"
           name="character_set"
           value="numbers"
-          onclick="return ValidatePetSelection();"
+          checked
+          onclick="return ValidateCharSelects();"
         />Numbers<br />
         <input
           type="checkbox"
           name="character_set"
           value="special"
-          onclick="return ValidatePetSelection();"
-        />Special
+          checked
+          onclick="return ValidateCharSelects();"
+        />Special Characters
+      </div>
+      <div class="alert warning">
+        <strong>Warning!</strong> You Must Choose at Least 2 Sets!
       </div>
       <div class="slidecontainer">
+        <h3>How Long do you want your Password to be?</h3>
         <input
           type="range"
           min="8"
