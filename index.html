@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Password Generator</title>
+  </head>
+  <body id="main">
+    <header class="main_header">
+      <h1>Password Generator</h1>
+    </header>
+    <section class="main">
+      <h2>Generate a Password</h2>
+      <div class="options">
+        <h3>Choose what Character Sets you Want</h3>
+        <input
+          type="checkbox"
+          name="character_set"
+          value="lower"
+          checked
+          onclick="return ValidatePetSelection();"
+        />Lower Case<br />
+        <input
+          type="checkbox"
+          name="character_set"
+          value="upper"
+          checked
+          onclick="return ValidatePetSelection();"
+        />Upper Case<br />
+        <input
+          type="checkbox"
+          name="character_set"
+          value="numbers"
+          onclick="return ValidatePetSelection();"
+        />Numbers<br />
+        <input
+          type="checkbox"
+          name="character_set"
+          value="special"
+          onclick="return ValidatePetSelection();"
+        />Special
+      </div>
+      <div class="slidecontainer">
+        <input
+          type="range"
+          min="8"
+          max="128"
+          value="64"
+          class="slider"
+          id="myRange"
+        />
+        <span class="text">Length: </span>
+        <span id="length"></span>
+      </div>
+
+      <div class="pass_display">
+        <textarea
+          readonly
+          id="password"
+          placeholder="Your Secure Password"
+          aria-label="Generated Password"
+        ></textarea>
+      </div>
+
+      <button class="btn" id="generate">Generate Password</button>
+      <button class="btn" id="copy">
+        Copy to Clipboard
+      </button>
+    </section>
+    <footer class="sticky_footer"></footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
