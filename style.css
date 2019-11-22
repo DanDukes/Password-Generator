@@ -38,10 +38,10 @@ h3 {
 .main {
     display: grid;
     min-height: 100vh;
-    width: 90%;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns: fit-content;
+    grid-template-columns: minmax(0, 45em);
     grid-template-rows: 12vh 1fr auto 1fr 1fr;
     grid-template-areas: "title" "options" "warning" "slidecontainer" "password";
     background-color: #FFFDD0;
@@ -99,11 +99,12 @@ textarea {
 }
 
 #passBox {
-    display: block;
-    width: 80%;
+    display: inline-block;
+    width: 90%;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
-    height: 100px;
+    height: 65px;
     margin-top: 10px;
     background: rgb(253, 254, 255);
     overflow-wrap: break-word;
@@ -112,7 +113,7 @@ textarea {
 }
 
 .slidecontainer {
-    display: inline-block;
+    display: block;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -123,6 +124,7 @@ textarea {
 .length {
     -webkit-appearance: none;
     width: 90%;
+    max-width: 90%;
     height: 30px;
     margin-top: 20px;
     border-radius: 5px;
@@ -219,8 +221,7 @@ textarea {
 }
 
 .button_area {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     justify-content: middle;
     align-items: center;
 }
@@ -362,3 +363,4 @@ button {
         align-items: center;
         justify-items: center;
     }
+}

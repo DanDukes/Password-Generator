@@ -1,15 +1,9 @@
-//Define Individual arrays per Character Set
-//set chars as strings and use split, less typing this way
+//Define Individual Character Sets as strings
+
 var lettersLower = "abcdefghijklmnopqrstuvwxyz"; // string of letters
 var lettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789"; //string of numbers
-var specials = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~"; //string of special chars, note the \ to escape the double quote
-
-//create the arrays that hold the Character Sets
-//var lettersLower = letters.split(""); //lowercase array
-//var lettersUpper = letters.toUpperCase().split(""); //uppercase array
-//var numbers = numbers.split(""); //turn numbers into array
-//var specials = specials.split(""); //turn special chars into array
+var specials = "!#$%&'()*+,-./:;=?@[]^_`{|}~";
 
 //Log arrays to check for accuracy
 console.log(lettersLower); //log lowercase array
@@ -25,6 +19,7 @@ function ValidateCharSelects() {
   const warning = document.querySelector(".warning"); //defines warning as any element in the DOM with the .warning class
   var generate = document.getElementById("generate"); //defines generate as the element in the DOM with the unique generate ID
   var numberOfCheckedItems = 0; //set number of checked items to 0 before every loop to avoid accidental addition
+
   //for if loop that is called whenever a box is manipulated, loops through all the items in our Nodelist named checkboxes and counts the checks
   for (var i = 0; i < checkboxes.length; i++) {
     //full loop through checkboxes, the index i will always be less than the length of the due to starting at 0
@@ -52,8 +47,7 @@ slider.oninput = function passLength() {
 };
 
 //Main PW Generation Function
-
-//var clipboard = new Clipboard(".copy");
+//first
 var lowercaseSelect = document.querySelector('input[value="lettersLower"]'),
   uppercaseSelect = document.querySelector('input[value="lettersUpper"]'),
   numbersSelect = document.querySelector('input[value="numbers"]'),
