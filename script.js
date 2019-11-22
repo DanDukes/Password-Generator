@@ -41,13 +41,17 @@ var slider = document.getElementById("length");
 var length = document.getElementById("value");
 length.innerHTML = slider.value; // Display the default slider value
 
-// Update the current slider value (each time you drag the slider handle)
+// Update the current slider value (each time the slider handle handle is dragged, it fires off of the oninput event)
 slider.oninput = function passLength() {
   length.innerHTML = this.value;
 };
 
+//credit to the internet for all the slider stuff, I just really wanted a slider in here, and I didn't want to use jQuery, turns out thats pretty hard.
+//ended up using a datalist attribute on the input tag so the html had the number predefined on load, and we just have to set it, rather than setting a number
+//thats not defined in the DOM already and then trying to have js parse it, even though its already run...
+
 //Main PW Generation Function
-//first
+//First we must define the variables we will be needing, 4 looking at the checkboxes, 4 are defining variables to elements on the html, and the last 3 are setting up empty vars
 var lowercaseSelect = document.querySelector('input[value="lettersLower"]'),
   uppercaseSelect = document.querySelector('input[value="lettersUpper"]'),
   numbersSelect = document.querySelector('input[value="numbers"]'),
@@ -59,11 +63,12 @@ var lowercaseSelect = document.querySelector('input[value="lettersLower"]'),
   passLength,
   userPassword,
   passwordPool;
-
+//This is the main generation funtion
 function GeneratePassword() {
-  userPassword = "";
+  userPassword = ""; //first we define 2 of our empty variables as empty strings
   passwordPool = "";
   if (lowercaseSelect.checked) {
+    //next we go through a series of 4 if statements, if the value checked is true on the elements we've defined, we add the corresponding character set to the pool
     passwordPool += lettersLower;
   }
   if (uppercaseSelect.checked) {
@@ -75,21 +80,24 @@ function GeneratePassword() {
   if (specialsSelect.checked) {
     passwordPool += specials;
   }
-  console.log(passwordPool);
+  console.log(passwordPool); //log the final pool to make sure the check buttons got read correctly
 
-  passlength = Number(lengthInput.value);
+  passlength = Number(lengthInput.value); //here we making sure we convert the length value from the slider to a number before attempting to math with it
 
   for (let i = 0; i < passlength; i++) {
+    //same full loop logic as before, the index will always be lower than the length, but its gotta loop through to be sure!  yay dev tricks
     userPassword += passwordPool.charAt(
-      Math.floor(Math.random() * passwordPool.length)
-    );
+      Math.floor(Math.random() * passwordPool.length) //so, at the end its pretty simple.  we loop through as many times as was set by the slider, and each loop is picking a
+    ); //random character from the pool and adding it to the end of the password variable, while also redefining the variable
   }
-  passwordBox.innerHTML = userPassword;
+  passwordBox.innerHTML = userPassword; //this is where we put the now generated password back on the page
 }
 
+//Function to copy the PW out of the text area.  Again, thank the internet for guidance in this realm
 function copyClip() {
-  var copyText = document.getElementById("passBox");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-  document.execCommand("copy");
+  //we call this with an OnClick event on a button in the html, just like the password gen
+  var copyText = document.getElementById("passBox"); //set the variable
+  copyText.select(); //select it with the method specifically for selecting text from a textarea...handy
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/ //I guess safari doesn't like to select things without a range defined?  nice apple, real nice
+  document.execCommand("copy"); //and now we just copy it, tada!
 }
