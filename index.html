@@ -9,10 +9,11 @@
   </head>
   <body id="main">
     <section class="main">
+        <div class="titlearea">
+            <h1>Password Generator</h1>
+            <h3>Choose Your Character Sets!</h3>
+        </div>
       <div class="options">
-        <h1>Password Generator</h1>
-        <h3>Choose Your Character Sets!</h3>
-        <div class="inputfield">
           <input
             id="lettersLower"
             class="check"
@@ -22,7 +23,7 @@
             checked
             onclick="return ValidateCharSelects();"
           />
-          <label for="lettersLower">Lowercase</label>
+          <label class="checklabel" for="lettersLower">Lowercase</label>
           <input
             id="lettersUpper"
             class="check"
@@ -32,7 +33,7 @@
             checked
             onclick="return ValidateCharSelects();"
           />
-          <label for="lettersUpper">Uppercase</label>
+          <label class="checklabel" for="lettersUpper">Uppercase</label>
           <input
             id="numbers"
             class="check"
@@ -42,7 +43,7 @@
             checked
             onclick="return ValidateCharSelects();"
           />
-          <label for="numbers">Numbers</label>
+          <label class="checklabel" for="numbers">Numbers</label>
           <input
             id="specials"
             class="check"
@@ -52,16 +53,18 @@
             checked
             onclick="return ValidateCharSelects();"
           />
-          <label for="specials">Specials</label>
+          <label class="checklabel" for="specials">Specials</label>
         </div>
-        <div class="alert warning">
-          <strong>Warning!</strong> You Must Choose at Least 2 Sets!
-        </div>
-      </div>
+        
+    
+
+      <div class="alert warning">
+            <strong>Warning!</strong> You Must Choose at Least 2 Sets!
+          </div>
 
       <div class="slidecontainer">
-        <h3>How long do you want your Password to be?</h3>
-        <span id="value"></span>
+        <h3>How long do you want your Password to be?</h3><br>
+        Current Length is: <span id="value"></span><br>
         <input
           class="length"
           type="range"
