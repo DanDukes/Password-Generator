@@ -8,71 +8,77 @@
     <title>Password Generator</title>
   </head>
   <body id="main">
-    <h1>Password Generator</h1>
+    <div id="leftSB"></div>
+    <div id="rightSB"></div>
     <section class="main">
-      <h2>Generate a Password</h2>
+      <header>
+        <h1>Password Generator</h1>
+      </header>
       <div class="options">
         <h3>Choose what Character Sets you Want</h3>
         <input
+          class="check"
           type="checkbox"
           name="character_set"
-          value="lower"
+          value="lettersLower"
           checked
           onclick="return ValidateCharSelects();"
-        />Lower Case<br />
+        />
+        <span class="checkCustom">Lower Case</span>
+        <br />
         <input
+          class="check"
           type="checkbox"
           name="character_set"
-          value="upper"
+          value="lettersUpper"
           checked
           onclick="return ValidateCharSelects();"
-        />Upper Case<br />
+        /><span class="checkCustom">Upper Case</span><br />
         <input
+          class="check"
           type="checkbox"
           name="character_set"
           value="numbers"
           checked
           onclick="return ValidateCharSelects();"
-        />Numbers<br />
+        /><span class="checkCustom">Numbers</span><br />
         <input
+          class="check"
           type="checkbox"
           name="character_set"
-          value="special"
+          value="specials"
           checked
           onclick="return ValidateCharSelects();"
-        />Special Characters
+        /><span class="checkCustom">Special Characters</span>
+        <div class="alert warning">
+          <strong>Warning!</strong> You Must Choose at Least 2 Sets!
+        </div>
       </div>
-      <div class="alert warning">
-        <strong>Warning!</strong> You Must Choose at Least 2 Sets!
-      </div>
+
       <div class="slidecontainer">
         <h3>How Long do you want your Password to be?</h3>
+        Value: <span id="value"></span>
         <input
+          class="length"
           type="range"
+          id="length"
           min="8"
           max="128"
-          value="68"
-          class="slider"
-          id="myRange"
+          list="ranges"
         />
-        <span class="text">Length: </span>
-        <span id="length"></span>
       </div>
-
-      <div class="pass_display">
-        <textarea
-          readonly
-          id="password"
-          placeholder="Your Secure Password"
-          aria-label="Generated Password"
-        ></textarea>
+      <div class="password">
+        <h2>Generate a Password</h2>
+        <textarea id="passBox"></textarea>
+        <button id="generate" onclick="return GeneratePassword();">
+          Generate Password
+        </button>
+        <button id="copy" onclick="copyClip()">
+          Copy to Clipboard
+        </button>
       </div>
-
-      <button class="btn" id="generate">Generate Password</button>
-      <button class="btn" id="copy">
-        Copy to Clipboard
-      </button>
     </section>
+
     <footer class="sticky_footer"></footer>
 
     <script src="script.js"></script>
