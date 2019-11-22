@@ -72,13 +72,39 @@
         />
       </div>
       <div class="password">
-        <button id="generate" onclick="return GeneratePassword();">
-          Generate Password</button
-        ><br />
-        <textarea id="passBox"></textarea><br />
-        <button id="copy" onclick="copyClip()">
-          Copy to Clipboard
+          <div id="passBox"></div>
+      <!--  <textarea id="passBox"></textarea> -->
+        <br />
+        <div class="button_area"></div>
+        <button
+          class="button"
+          id="generate"
+          onclick="return GeneratePassword();"
+        >
+          <div class="bottom"></div>
+
+          <div class="top">
+            <div class="label">Generate!</div>
+
+            <div class="button-border button-border-left"></div>
+            <div class="button-border button-border-top"></div>
+            <div class="button-border button-border-right"></div>
+            <div class="button-border button-border-bottom"></div>
+          </div>
         </button>
+        <button class="button" id="copy" onclick="copyClip()">
+          <div class="bottom"></div>
+
+          <div class="top">
+            <div class="label">Clip It!</div>
+
+            <div class="button-border button-border-left"></div>
+            <div class="button-border button-border-top"></div>
+            <div class="button-border button-border-right"></div>
+            <div class="button-border button-border-bottom"></div>
+          </div>
+        </button>
+    </div>
       </div>
     </section>
 
