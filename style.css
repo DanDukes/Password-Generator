@@ -3,20 +3,26 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("beanstalk.png");
-    width: 100%;
+    width: 100vw;
     color: #777777;
-    height: 100%;
+    max-height: 100vh;
     text-align: center;
+    vertical-align: middle;
 }
 
 h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(86, 201, 255);
+    font-size: 3rem;
+    margin: 0;
 }
 
 h2 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(86, 201, 255);
+}
+
+h3 {
+    margin: 0;
+    font-size: 2rem;
 }
 
 header {
@@ -26,64 +32,74 @@ header {
     display: inline-block;
 }
 
-header.h1 {}
-
 .main {
     display: grid;
+    max-height: 100vh;
     grid-template-columns: 20vw auto 20vw;
-    grid-template-rows: 15vh auto;
-    grid-template-areas: "header header header" "leftSB options rightSB" "leftSB slidecontainer rightSB" "leftSB password rightSB";
-}
-
-#leftSB {
-    grid-area: leftSB;
-}
-
-#rightSB {
-    grid-area: rightSB;
+    grid-template-rows: 1fr auto 1fr;
+    grid-template-areas: ". options ." ". slidecontainer ." ". password .";
 }
 
 .options {
     grid-area: options;
+    text-align: center;
+    background-color: #FFFDD0;
+    border-left: 3px solid gray;
+    border-right: 3px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .password {
     margin-bottom: 10px;
     grid-area: password;
+    background-color: #FFFDD0;
+    border-left: 3px solid gray;
+    border-right: 3px solid gray;
+    font-size: 1.3rem;
+    padding-top: 10px;
 }
 
 button {
     background-color: rgb(86, 201, 255);
-    /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin-top: 5px;
 }
 
 textarea {
     outline: none;
     display: inline-block;
-    width: 315px;
+    width: 80%;
     height: 70px;
+    margin-top: 10px;
 }
 
 .slidecontainer {
-    width: 100%;
     grid-area: slidecontainer;
+    background-color: #FFFDD0;
+    border-left: 3px solid gray;
+    border-right: 3px solid gray;
+    font-size: 1.3rem;
     /* Width of the outside container */
 }
 
 .length {
     -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
+    width: 90%;
+    height: 30px;
+    margin-top: 20px;
     border-radius: 5px;
     background: #d3d3d3;
     outline: none;
+    border: solid 3px black;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
@@ -92,19 +108,13 @@ textarea {
 .length::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+    border: solid 3px grey;
     background: rgb(86, 201, 255);
     cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: rgb(86, 201, 255);
-    cursor: pointer;
+    box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .alert {
@@ -131,14 +141,60 @@ textarea {
     display: none;
 }
 
-.check {
-    position: absolute;
-    opacity: 0;
+.inputfield {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputfield input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.inputfield label {
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.3rem;
+    line-height: 1;
+    width: 7rem;
+    text-align: center;
+    padding: 7% 10%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 10px;
+    margin-bottom: 2%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+    border-radius: 10%;
+}
+
+.inputfield label:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+.inputfield input:checked+label {
+    background-color: rgb(86, 201, 255);
+    box-shadow: none;
+}
+
+@media screen and (max-width: 500px) {
     .main {
-        height: 100vh;
+        margin: 0;
+        padding: 0;
+        max-height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        grid-template-areas: "options" "slidecontainer" "password";
+        gap: 0;
     }
 }
