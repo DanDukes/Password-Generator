@@ -1,4 +1,4 @@
-# homework_3
+# Password Generator App
 javascript pw generator
 
 ## Description 
